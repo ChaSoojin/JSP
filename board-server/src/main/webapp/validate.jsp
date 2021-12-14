@@ -126,6 +126,6 @@
         <input type="button" value="확인" id="confirmBox" onclick="checkVal(form)">
     </form>
 
-    <script src="agree.js"></script>
+    <script src="validate.js"></script>
 </body>
 </html>
