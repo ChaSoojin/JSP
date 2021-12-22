@@ -14,7 +14,7 @@
                       <div class="button-outer"><a class="button button-lg button-primary button-winona" href="rentalcarlist.jsp">예약하기</a></div>
                     </div>
                     <div class="col-lg-6 position-static">
-                      <div class="floating-image" style="background-image: url(https://lh3.googleusercontent.com/proxy/YB-oJPFdVdNW-dF6FzkElIpXcmmE416MdmAdDwTceMPY4UgPr8pvfV8K4CI5vMeiBeavW5P4dzOZtlrV0gRgUOSpauYEmnYlSXda7-X2VPjpCXhaq8LmJxKF8YnhqPvj1-d-9IJKwkKEGJbDRtk);"></div>
+                      <div class="floating-image" style="background-image: url(./resources/main_car1.png);"></div>
                     </div>
                   </div>
                 </div>
@@ -31,7 +31,7 @@
                       <div class="button-outer"><a class="button button-lg button-primary button-winona" href="reviewlist.jsp">리뷰보기</a></div>
                     </div>
                     <div class="col-lg-6 position-static">
-                      <div class="floating-image" style="background-image: url(https://lh3.googleusercontent.com/proxy/J2Ux2xVFR8HVXSdh-DpuuTqsilIZ-07Lj2ULy410cDI5RIJswmxxxoyJejXvpMDe8JR4mvs_i5_-ShKqpEQsu3J10jxG-3vDJrLYX6ocohX63BZwPDzn7FUI-a0WfCISFeRwmKYn);"></div>
+                      <div class="floating-image" style="background-image: url(./resources/main_car1.png);"></div>
                     </div>
                   </div>
                 </div>
