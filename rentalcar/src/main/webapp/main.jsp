@@ -31,7 +31,7 @@
                       <div class="button-outer"><a class="button button-lg button-primary button-winona" href="reviewlist.jsp">리뷰보기</a></div>
                     </div>
                     <div class="col-lg-6 position-static">
-                      <div class="floating-image" style="background-image: url(./resources/main_car1.png);"></div>
+                      <div class="floating-image" style="background-image: url(./resources/main_car2.png);"></div>
                     </div>
                   </div>
                 </div>
