@@ -35,6 +35,12 @@
 	}
 	else{
 		System.out.println("예약실패");
+%>
+	<script>
+		alert("로그인 후 이용 바랍니다.");
+		location.href='login.jsp';
+	</script>
+<%
 	}
 %>
 </body>

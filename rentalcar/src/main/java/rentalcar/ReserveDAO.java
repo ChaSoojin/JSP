@@ -57,6 +57,7 @@ public class ReserveDAO {
 	
 	//예약하기
 	public boolean addReserve (ReserveDTO reserve) {
+		boolean chk;
 		try {						
 			conn = DBManager.getConnection();
 			String str = "insert into car_reserve(no, id, cnt, days, r_day, use_navi, use_seat) values(?, ?, ?, ?, ?, ?, ?)";
@@ -78,12 +79,14 @@ public class ReserveDAO {
 			
 			System.out.println("예약성공");						
 			
+			chk = true;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("예약실패");
+			chk = false;
 		}
-		return true;
+		return chk;
 	}
 	
 	//예약취소

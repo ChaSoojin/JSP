@@ -23,7 +23,6 @@
 	response.sendRedirect("rentalcarSearch.jsp");
 	
 	session.setAttribute("car", cars);
-	session.setMaxInactiveInterval(1);
 %>
 </body>
 </html>
