@@ -19,7 +19,7 @@
 <body>
 	<h1>Index Page</h1>
 	<%
-		UserDAO dao = UserDAO.getInstance();
+	UserDAO dao = UserDAO.getInstance();
 		ArrayList<UserDTO> datas = dao.getUsers();
 		
 		for(int i = 0; i < datas.size(); i++){

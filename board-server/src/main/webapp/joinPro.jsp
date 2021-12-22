@@ -13,8 +13,8 @@
 <body>
 	<%-- pro : process --%>
 	<%
-		request.setCharacterEncoding("UTF-8");
-	
+	request.setCharacterEncoding("UTF-8");
+			
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String pw2 = request.getParameter("pw2");
@@ -30,8 +30,8 @@
 		UserDAO dao = UserDAO.getInstance();
 		UserDTO user = new UserDTO(id,pw);
 		
-	
-	if(!pw.equals(pw2)){
+			
+			if(!pw.equals(pw2)){
 	%>
 	<script>
 	alert('비밀번호가 일치하지 않습니다. 다시 확인해주세요!');
