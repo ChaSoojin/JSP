@@ -20,28 +20,24 @@ public class UserUpdateAction implements Action {
 		System.out.println("ID: " + id);
 
 		String pw = request.getParameter("pw");
-
 		UserDAO dao = UserDAO.getInstance();
 		HttpSession session = request.getSession();
 
 		String url = "";
 
 		if (dir == UserDAO.REMOVE) {
-			// 탈퇴실패
 			if (dao.deleteUser(id, pw) == -1) {
 				url = "views/userUpdate.jsp";
 			}
 
-			// 탈퇴성공
 			else {
-				System.out.println("log: " + session.getAttribute("id"));
-				session.removeAttribute("id");
-				response.sendRedirect("views/main.jsp");
+				session.removeAttribute("log");
+				url="views/main.jsp";
 			}
+			
 		} else if (dir == UserDAO.UPDATE) {
 			if (dao.updateUser(id, pw)) {
 				new BoardListAction().execute(request, response);
-				System.out.println("업데이트성공,,,,");
 			}
 			else {
 				url = "views/userUpdate.jsp";

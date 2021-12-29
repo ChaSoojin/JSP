@@ -1,3 +1,4 @@
+<%@page import="model.dao.BoardDAO"%>
 <%@page import="model.dto.CommentDTO"%>
 <%@page import="model.dao.CommentDAO"%>
 <%@page import="model.dto.BoardDTO"%>
@@ -108,6 +109,10 @@
 	left:10px;
 	font-size:12px;
 }
+
+#updateform{
+	display:inline;
+}
 </style>
 <title>Board View Page</title>
 </head>
@@ -128,16 +133,21 @@
 				<form method="post" action="service">
 					<input type="hidden" name="no" value="${boardview.no }">
 				</form>
-				<%-- <%          			
+				<%      
+					BoardDAO dao = BoardDAO.getInstance();
+					int no = Integer.parseInt(request.getParameter("no"));
+					String log = (String)session.getAttribute("log");
+					
                 	if(dao.getLike(no, log)){
+                		
                 %> <img src="./img/like.png" id="likeimg" name="like"
-					onclick="location.href='boardLikePro.jsp?no=<%=no%>'"> <%
+					onclick="location.href='service?command=BoardLike&no=<%=no%>'"> <%
                 	}else{
             	%> <img src="./img/default_like.png" id="likeimg"
 					name="likenot"
-					onclick="location.href='boardLikePro.jsp?no=<%=no%>'"> <%
+					onclick="location.href='service?command=BoardLike&no=<%=no%>'"> <%
                 	}
-            	%> --%>
+            	%> 
 				</td>
 			</tr>
 			<tr>
@@ -154,18 +164,17 @@
 		</table>
 
 		<h3>댓글작성</h3>
-		<form method="post" action="commentPro.jsp">
+		<form method="post" action="service">
 			<textarea id="comment" name="comment"
 				placeholder="주제와 무관한 댓글이나 악플은 경고조치 없이 삭제됩니다."></textarea>
 			<input type="hidden" id="no" name="no"
 				value="<%=request.getParameter("no")%>"> <input
-				type="submit" value="등록" id="commentbtn">
+				type="submit" name="command" value="등록" id="commentbtn">
 		</form>
 		
 			<table style="border-collapse: collapse; width: 530px;">
 			<%
        			CommentDAO commentdao = CommentDAO.getInstance();
-				int no = Integer.parseInt(request.getParameter("no"));
        			ArrayList<CommentDTO> comments = commentdao.getComments(no);
        			for(CommentDTO comment : comments){
        				int num = comment.getNo();
@@ -175,74 +184,54 @@
        				int notlike = comment.getNotlikes();
        				Timestamp regDate = comment.getRegdate();
        		%>
-			<%-- <form method="post" action="commentDeletePro.jsp?no=<%=no %>"> --%>
 				<tr>
 					<td><%=num %></td>
 					<td id="writeper">작성자: <%=commentid %></td>
 					<td id="writeday">작성일: <%=regDate %> 
-			<%-- <%
-				String log = (String)session.getAttribute("log");
+			<%
        			if(commentid.equals(log)){
        		%> 
-       		<input type="hidden" id="num" name="num" value="<%=num%>"> 
-       		<input type="submit" id="del" value="삭제"> 
+       		<input type="button" id="del" value="삭제" onclick="location.href='service?command=삭제&num=<%=num%>&no=<%=request.getParameter("no")%>'"> 
 						
 			<%
        			}
-       		%> --%>
+       		%> 
 				</tr>
-		<%--</form>
-		 <form method="post" action="commentLikePro.jsp?no=<%=no%>" id="commentform">
+		 
+		 
 				<tr class="line">
 					<td colspan="3"><%=commentContent %></td>
 					<td id="commentimg">
-						<button type="submit" id="goodbtn" name="good">
+       					<button type="button" id="goodbtn" onclick="location.href='service?command=CommentLike&no=<%=no%>&num=<%=num%>'"> 
 						<img src="./img/good.png" id="goodimg"><p id="cnt"><%=like %></p>
 						</button>
 						
-						<button type="submit" id="badbtn" name="bad">
+       					<button type="button" id="badbtn" onclick="location.href='service?command=CommentNotLike&no=<%=no%>&num=<%=num%>'"> 
 						<img src="./img/bad.png" id="badimg"><p id="cnt"><%=notlike %></p>
 						</button>
-						<input type="hidden" id="num" name="num" value="<%=num%>"> 
 					</td>
 				</tr>
-		</from> --%>
 			<%
        			}
        		%>
 			</table>
 		<%
-			String log = (String)session.getAttribute("log");
 			String id = ((BoardDTO)request.getAttribute("boardview")).getId();
-			System.out.println(log + " :::: " + id);
 			
         	if(log.equals(id)){
         %>
-        <form action="service" method="post">
+        <form action="service" method="post" id="updateform">
 			<input type="hidden" name="command" value="main">
 			<input type="hidden" name="no" value="${boardview.no }">
-			<input type="submit" name="link" value="boardUpdate">
-		</form>
-
-		<form action="service" method="post">
-			<input type="hidden" name="no" value="${boardview.no }">
-			<input type="submit" name="command" value="boardDelete">
+			<input type="submit" name="link" id="updatebtn" value="수정하기">
 		</form>
 		
-		<form action="service" method="post">
-			<input type="submit" name="command" value="boardlist">
-		</form>
-		
-		<!-- <button type="button" id="updatebtn" onclick="location.href='service?command=boardDelete&no=${boardview.no }'">삭제하기</button> -->
-		<!--<button type="button" id="updatebtn" onclick="location.href='service?command=boardlist'">돌아가기</button>-->		
+		<button type="button" id="updatebtn" onclick="location.href='service?command=boardDelete&no=${boardview.no }'">삭제하기</button>
+		<button type="button" id="updatebtn" onclick="location.href='service?command=boardlist'">돌아가기</button>	
 		<%
         	}else{
         %>
-		<!--<button type="button" id="updatebtn" onclick="location.href='service?command=boardlist'">돌아가기</button> -->
-		
-		<form action="service" method="post">
-			<input type="submit" name="command" value="boardlist">
-		</form>
+		<button type="button" id="updatebtn" onclick="location.href='service?command=boardlist'">돌아가기</button>
 		
 		<%
         	}

@@ -79,8 +79,10 @@ public class CommentDAO {
 				comments.add(new CommentDTO(cnt, originalno, id, boardno, comment, likes, notlikes, regDate));
 			}
 			
-			
-			System.out.println("코멘트: " + comments);
+			for(CommentDTO co : comments) {
+				System.out.println("코멘트: " + co.getComment());
+				
+			}
 			System.out.println("댓글 등록 성공");
 
 		} catch (Exception e) {
@@ -124,7 +126,7 @@ public class CommentDAO {
 			int idx = -1;
 			comments = getComments(boardno);
 			for(int i = 0; i < comments.size(); i++) {
-				if(comments.get(i).getNo() == commentno) {
+				if(comments.get(i).getOriginalno() == commentno) {
 					idx = i;
 				}
 			}

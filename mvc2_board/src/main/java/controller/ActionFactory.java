@@ -2,11 +2,15 @@ package controller;
 
 import controller.action.Action;
 import controller.action.BoardDeleteAction;
+import controller.action.BoardLikeAction;
 import controller.action.BoardListAction;
 import controller.action.BoardUpdateAction;
 import controller.action.BoardViewAction;
 import controller.action.BoardWriteAction;
 import controller.action.CommentAction;
+import controller.action.CommentDeleteAction;
+import controller.action.CommentLikeAction;
+import controller.action.CommentNotLikeAction;
 import controller.action.JoinAction;
 import controller.action.LoginAction;
 import controller.action.LogoutAction;
@@ -50,11 +54,26 @@ public class ActionFactory {
 		if(command.equals("boardDelete")) {
 			action = new BoardDeleteAction();
 		}
+		if(command.equals("boardUpdate")) {
+			action = new BoardUpdateAction();
+		}
 		if(command.equals("userUpdate")) {
 			action = new UserUpdateAction();
 		}
 		if(command.equals("등록")) {
 			action = new CommentAction();
+		}
+		if(command.equals("삭제")) {
+			action = new CommentDeleteAction();
+		}
+		if(command.equals("BoardLike")) {
+			action = new BoardLikeAction();
+		}
+		if(command.equals("CommentLike")) {
+			action = new CommentLikeAction();
+		}
+		if(command.equals("CommentNotLike")) {
+			action = new CommentNotLikeAction();
 		}
 
 		return action;

@@ -11,6 +11,15 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+form{
+	display:inline;
+}
+
+#btn{
+	cursor:pointer;
+}
+</style>
 <title>Board List</title>
 </head>
 <body>
@@ -20,29 +29,20 @@
 		if(log != null){
 	%>
 
-	<form action="service" method="post">
-		<input type="submit" value="logout"> 
-		<input type="hidden" name="command" value="logout">
-	</form>
+	<button onclick="location.href='service?command=logout'" id="btn">로그아웃</button>
 
 	<form action="service" method="post">
-		<input type="submit" name="link" value="boardWrite"> 
+		<input type="submit" id="btn" name="link" value="쓰기"> 
 		<input type="hidden" name="command" value="main">
 	</form>
 	
 	<form action="service" method="post">
-		<input type="submit" name="link" value="userUpdate"> 회원정보수정 
+		<input type="submit" id="btn" name="link" value="회원정보수정">  
 		<input type="hidden" name="command" value="main">
 		<input type="hidden" name="num" value="1">
 	</form>
-
-	<form action="service" method="post">
-		<input type="submit" name="command" value="userUpdate"> 회원탈퇴
-		<input type="hidden" name="num" value="0">
-	</form>
 	
-	<!-- <button onclick="location.href='checkPass.jsp?num=1'" id="update">회원정보수정</button> -->
-	<!-- <button onclick="location.href='checkPass.jsp?num=0'" id="remove">회원탈퇴</button> -->
+	<button onclick="location.href='service?command=userUpdate&num=0'" id="btn">회원탈퇴</button>
 
 	<%
 		}
@@ -50,7 +50,7 @@
     %>
 
 	<form action="service" method="post">
-		<input type="submit" name="link" value="login"> <input
+		<input type="submit" id="btn" name="link" value="login"> <input
 			type="hidden" name="command" value="main">
 	</form>
 
@@ -73,11 +73,6 @@
 				<tr>
 					<td>${ item.no }</td>
 					<td>
-					<form action="service" method="post">
-						<input type="hidden" name="no" value="${item.no }">
-						<input type="submit" name="command" value="boardView">
-					</form>
-					
 					<a href="service?command=boardView&no=${item.no}"> ${ item.title }</a>
 					</td>
 					<td>${ item.id }</td>

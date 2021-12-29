@@ -22,7 +22,6 @@ public class BoardUpdateAction implements Action{
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String id = (String) session.getAttribute("log");
-		String url = "";
 		
 		if(dao.updateBoard(no, title, content)){
 			new BoardViewAction().execute(request, response);
@@ -30,7 +29,5 @@ public class BoardUpdateAction implements Action{
 		else {
 			new BoardListAction().execute(request, response);
 		}
-		
-		request.getRequestDispatcher(url).forward(request, response);
 	}
 }

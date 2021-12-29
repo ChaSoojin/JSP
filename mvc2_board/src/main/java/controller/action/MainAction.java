@@ -21,13 +21,13 @@ public class MainAction implements Action{
 		else if(link.equals("join")) {
 			url = "views/join.jsp";
 		}
-		else if(link.equals("boardWrite")) {
+		else if(link.equals("쓰기")) {
 			url = "views/boardWrite.jsp";
 		}
-		else if(link.equals("boardUpdate")) {
+		else if(link.equals("수정하기")) {
 			url = "views/boardUpdate.jsp";
 		}
-		else if(link.equals("userUpdate")) {
+		else if(link.equals("회원정보수정")) {
 			url = "views/userUpdate.jsp";
 		}
 		

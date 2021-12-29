@@ -25,6 +25,11 @@
     		text-decoration:none;
     		color : green;
     	}
+    	
+    	#loginbtn{
+    		width:130px;
+    		height:30px;
+    	}
     </style>
     <title>login</title>
 </head>
@@ -34,8 +39,8 @@
 	<input type="hidden" name="command" value="login">
     	<%-- input 태그의 name과 value가 파라미터로 전달됨 --%>
         <span>id:&#9;</span><input type='text' name='id' required><br>
-        <span>&#9;pw:&#9;</span><input type='password' name='pw' required>
-        <input type="submit">
+        <span>pw:&#9;</span><input type='password' name='pw' required><br><br>
+        <input type="submit" value="로그인" id="loginbtn">
     </form>
 </body>
 </html>
