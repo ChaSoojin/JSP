@@ -143,10 +143,12 @@ public class UserDAO {
 				pstmt.executeUpdate();
 				
 				users.remove(delIdx);
+				System.out.println("탈퇴성공");
 				
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
+				System.out.println("탈퇴실패");
 			}	
 		}
 		

@@ -27,6 +27,9 @@ public class MainAction implements Action{
 		else if(link.equals("boardUpdate")) {
 			url = "views/boardUpdate.jsp";
 		}
+		else if(link.equals("userUpdate")) {
+			url = "views/userUpdate.jsp";
+		}
 		
 		request.getRequestDispatcher(url).forward(request, response);
 	}

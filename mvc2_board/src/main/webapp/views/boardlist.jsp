@@ -30,8 +30,19 @@
 		<input type="hidden" name="command" value="main">
 	</form>
 	
-	<button onclick="location.href='checkPass.jsp?num=1'" id="update">회원정보수정</button>
-	<button onclick="location.href='checkPass.jsp?num=0'" id="remove">회원탈퇴</button>
+	<form action="service" method="post">
+		<input type="submit" name="link" value="userUpdate"> 회원정보수정 
+		<input type="hidden" name="command" value="main">
+		<input type="hidden" name="num" value="1">
+	</form>
+
+	<form action="service" method="post">
+		<input type="submit" name="command" value="userUpdate"> 회원탈퇴
+		<input type="hidden" name="num" value="0">
+	</form>
+	
+	<!-- <button onclick="location.href='checkPass.jsp?num=1'" id="update">회원정보수정</button> -->
+	<!-- <button onclick="location.href='checkPass.jsp?num=0'" id="remove">회원탈퇴</button> -->
 
 	<%
 		}
@@ -63,10 +74,11 @@
 					<td>${ item.no }</td>
 					<td>
 					<form action="service" method="post">
-					<input type="hidden" name="command" value="boardView">
-					<input type="hidden" name="no" value="${item.no}">
-					<a href="service">${ item.title }</a>
+						<input type="hidden" name="no" value="${item.no }">
+						<input type="submit" name="command" value="boardView">
 					</form>
+					
+					<a href="service?command=boardView&no=${item.no}"> ${ item.title }</a>
 					</td>
 					<td>${ item.id }</td>
 					<td>${ item.likes }</td>
